@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cody Allen — Network Engineer & Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F2F1ED;
+            --bg-dark: #1A1A1A;
+            --bg-card: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #4A4A4A;
+            --text-tertiary: #7A7A7A;
+            --text-muted: #9A9A9A;
+            --accent: #2C3E50;
+            --accent-light: #3D5A73;
+            --rule: #E5E4E0;
+            --shadow-subtle: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--rule);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--rule);
+            margin: 0;
+        }
+
+        /* Hero */
+        #hero {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .hero-contact a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .hero-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .hero-contact span {
+            color: var(--text-tertiary);
+        }
+
+        /* Summary quote */
+        .summary-block {
+            background: var(--bg-secondary);
+            padding: 2rem 2.5rem;
+            border-left: 3px solid var(--accent);
+            margin: 3rem 0;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .experience-company {
+            color: var(--accent-light);
+        }
+
+        .experience-meta {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        .experience-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-bullets {
+            list-style: none;
+        }
+
+        .experience-bullets li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-bullets li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .experience-bullets .level {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .experience-oneline {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Tools Built */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .tool-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .tool-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .tool-card .tech {
+            margin-top: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0.75rem 1.5rem;
+        }
+
+        .skill-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .skill-list {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Featured Project Section - Minimal / Mirror's Edge */
+        .featured-project {
+            background: #FAFAFA;
+            color: var(--text-primary);
+            padding: 5rem 0;
+            margin: 0 calc(-50vw + 50%);
+            width: 100vw;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .featured-project .section-title {
+            color: var(--text-muted);
+        }
+
+        .featured-header {
+            margin-bottom: 1rem;
+        }
+
+        .featured-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .featured-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+        }
+
+        .featured-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .featured-item {
+            background: white;
+            border: 1px solid var(--rule);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .featured-item:hover {
+            border-color: #E53935;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .featured-img-wrapper {
+            background: #f5f5f5;
+            padding: 0;
+        }
+
+        .featured-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .featured-info {
+            padding: 1.25rem;
+        }
+
+        .featured-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .featured-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .featured-title {
+                font-size: 2rem;
+            }
+        }
+
+        .featured-grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 900px) {
+            .featured-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mindkeep-section {
+            border-top: 1px solid var(--rule);
+        }
+
+        /* Transmission Lines - Data Raceway */
+        .transmission-line {
+            position: relative;
+            height: 100px;
+            margin: 0 auto;
+            overflow: visible;
+            pointer-events: none;
+        }
+
+        .transmission-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .transmission-path {
+            fill: none;
+            stroke: rgba(180, 180, 175, 0.3);
+            stroke-width: 1;
+        }
+
+        .data-packet {
+            fill: #E53935;
+        }
+
+        .data-packet-alt {
+            fill: #5A9A8F;
+        }
+
+        .data-packet-gold {
+            fill: #E6B86A;
+        }
+
+        @media (max-width: 768px) {
+            .transmission-line {
+                height: 60px;
+            }
+        }
+
+        /* Photo Gallery */
+        .gallery-section {
+            background: var(--bg-dark);
+            color: white;
+            padding: 4rem 0;
+            margin: 0 calc(-50vw + 50%);
+            width: 100vw;
+        }
+
+        .gallery-section .container {
+            max-width: 1100px;
+        }
+
+        .gallery-section .section-title {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .gallery-grid {
+            column-count: 4;
+            column-gap: 1rem;
+        }
+
+        .gallery-item {
+            background: #2a2a2a;
+            border: 2px solid #333;
+            padding: 6px;
+            transition: all 0.3s;
+            cursor: pointer;
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: #555;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-item .caption {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.5);
+            padding: 0.5rem 0 0;
+            text-align: center;
+        }
+
+        .gallery-item .ai-badge {
+            display: inline-block;
+            color: rgba(255,255,255,0.4);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.3rem;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                column-count: 2;
+            }
+        }
+
+        /* Education */
+        .education-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .education-degree {
+            font-weight: 600;
+        }
+
+        .education-school {
+            color: var(--accent-light);
+        }
+
+        .education-details {
+            width: 100%;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            margin-top: 0.25rem;
+        }
+
+        /* About snippet */
+        .about-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 1.25rem;
+        }
+
+        .info-card .label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-card .value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        #contact {
+            background: var(--bg-secondary);
+            margin: 0 calc(-50vw + 50%);
+            width: 100vw;
+            padding: 4rem 0;
+        }
+
+        .contact-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item .label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item .value {
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--text-primary);
+            color: white;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-light);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Resume Title */
+        .resume-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        /* Colorful About Section */
+        .about-colorful {
+            background: #FAFAFA;
+            padding: 4rem 0;
+        }
+
+        .about-colorful-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .about-tagline {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .about-tagline span {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .about-tagline .highlight {
+            display: inline;
+            background: linear-gradient(to top, #F7D359 40%, transparent 40%);
+            padding-bottom: 2px;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .about-tags .tag {
+            background: white;
+            border: 1px solid var(--rule);
+            padding: 0.4rem 0.8rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .about-tagline span {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.6rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-contact {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .about-block {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .skill-label {
+                margin-bottom: -0.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .about-info {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#hero" class="nav-name">Cody Allen</a>
+            <div class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#gridwatch">GridWatch</a>
+                <a href="#mindkeep">MindKeep</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#about" style="color: #D97848;">[ ABOUT ME ]</a>
+                <a href="#resume">Resume</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Cody Allen</h1>
+                <p class="hero-tagline">Infrastructure & Network Engineer | NOC Team Lead with 9+ years owning uptime, incident response, and global infrastructure monitoring.</p>
+                <div class="hero-contact">
+                    <span>East Texas (Remote)</span>
+                    <a href="/cdn-cgi/l/email-protection#7e1d111a071f12121b10484d4e3e19131f1712501d1113"><span class="__cf_email__" data-cfemail="84e7ebe0fde5e8e8e1eab2b7b4c4e3e9e5ede8aae7ebe9">[email&#160;protected]</span></a>
+                    <span>737-394-5511</span>
+                    <span>469-407-9815 (cell)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Raceway 1 -->
+        <div class="transmission-line">
+            <svg class="transmission-svg" viewBox="0 0 1400 100" preserveAspectRatio="none">
+                <!-- Parallel fiber lanes -->
+                <g opacity="0.25">
+                    <line x1="0" y1="15" x2="1400" y2="15" stroke="#B4B4AF" stroke-width="1"/>
+                    <line x1="0" y1="30" x2="1400" y2="30" stroke="#B4B4AF" stroke-width="1"/>
+                    <line x1="0" y1="45" x2="1400" y2="45" stroke="#B4B4AF" stroke-width="1"/>
+                    <line x1="0" y1="60" x2="1400" y2="60" stroke="#B4B4AF" stroke-width="1"/>
+                    <line x1="0" y1="75" x2="1400" y2="75" stroke="#B4B4AF" stroke-width="1"/>
+                    <line x1="0" y1="90" x2="1400" y2="90" stroke="#B4B4AF" stroke-width="1"/>
+                </g>
+                <!-- Packets racing on lanes -->
+                <rect class="data-packet" width="6" height="4" y="13">
+                    <animate attributeName="x" from="-10" to="1410" dur="2.5s" repeatCount="indefinite"/>
+                </rect>
+                <rect class="data-packet-alt" width="6" height="4" y="28" opacity="0.8">
+                    <animate attributeName="x" from="-10" to="1410" dur="3s" repeatCount="indefinite" begin="0.4s"/>
+                </rect>
+                <rect class="data-packet-gold" width="6" height="4" y="43" opacity="0.7">
+                    <animate attributeName="x" from="-10" to="1410" dur="2.2s" repeatCount="indefinite" begin="0.8s"/>
+                </rect>
+                <rect class="data-packet" width="6" height="4" y="58" opacity="0.6">
+                    <animate attributeName="x" from="-10" to="1410" dur="2.8s" repeatCount="indefinite" begin="1.2s"/>
+                </rect>
+                <rect class="data-packet-alt" width="6" height="4" y="73" opacity="0.8">
+                    <animate attributeName="x" from="-10" to="1410" dur="2s" repeatCount="indefinite" begin="1.6s"/>
+                </rect>
+                <rect class="data-packet" width="6" height="4" y="88">
+                    <animate attributeName="x" from="-10" to="1410" dur="3.2s" repeatCount="indefinite" begin="2s"/>
+                </rect>
+            </svg>
+        </div>
+
+        <!-- Experience -->
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="experience-title">Level 3 NOC Engineer (Team Lead)  L1 → L2 → L3</span>
+                    <span class="experience-company">Fiber Sense Pty Ltd</span>
+                    <span class="experience-meta">• Remote</span>
+                </div>
+                <div class="experience-date">July 2021 – Present</div>
+                <ul class="experience-bullets">
+                    <li><span class="level">L1:</span> Owned observability for 28 fiber infrastructure nodes across 5 countries, maintaining 99.97% uptime SLA through proactive monitoring and rapid incident response</li>
+                    <li><span class="level">L2 / Team Lead:</span> Led 4-person NOC team across training, performance management, and on-call scheduling; authored SOPs adopted org-wide for standardized incident handling</li>
+                    <li><span class="level">L3:</span> Drove Zabbix infrastructure monitoring; served as incident commander for critical events including power failures, security incidents, and emergency field coordination across time zones</li>
+                    <li>Executed rapid troubleshooting and recovery: firewall remediation, remote PDU cycling, SIM diagnostics, and remote hands coordination to minimize MTTR</li>
+                    <li>Architected GridWatch, an internal Electron toolset for real-time node monitoring, GPS-based asset tracking, and multi-vendor dashboard aggregation</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="experience-title">Network Engineer</span>
+                    <span class="experience-company">ANI Network</span>
+                    <span class="experience-meta">• Remote</span>
+                </div>
+                <div class="experience-date">March 2019 – July 2021</div>
+                <ul class="experience-bullets">
+                    <li>Owned monitoring and infrastructure reliability across 3 data center sites in Dallas and NYC</li>
+                    <li>Established alerting framework in LibreNMS with custom thresholds and escalation paths</li>
+                    <li>Deployed and managed Ovirt virtualization platform; implemented Graylog for centralized log aggregation and analysis</li>
+                    <li>Configured network infrastructure: switch ports, VLANs, and on-site hardware; administered Asterisk PBX for company communications</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="experience-title">Data Center Engineer Tier 1 → 2 → 3</span>
+                    <span class="experience-company">IBM Cloud</span>
+                    <span class="experience-meta">• Dallas, TX</span>
+                </div>
+                <div class="experience-date">March 2016 – March 2019</div>
+                <ul class="experience-bullets">
+                    <li><span class="level">Tier 1:</span> Provisioned and deployed 500+ bare metal servers; maintained hardware inventory and lifecycle management</li>
+                    <li><span class="level">Tier 2:</span> Executed 100-rack data center POD buildout end-to-end: rack installation, fiber runs, switch cabling, and validation testing</li>
+                    <li><span class="level">Tier 3:</span> Owned customer-facing escalations, maintained SLA compliance, and onboarded new technicians</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Transmission Line 2 -->
+        <div class="transmission-line" style="height: 80px;">
+            <svg class="transmission-svg" viewBox="0 0 1400 80" preserveAspectRatio="none">
+                <path class="transmission-path" d="M 0,40 L 400,40 Q 500,40 500,25 T 700,25 L 900,25 Q 1000,25 1000,40 T 1200,40 L 1400,40" />
+                <circle class="data-packet" r="4">
+                    <animateMotion dur="5s" repeatCount="indefinite" path="M 0,40 L 400,40 Q 500,40 500,25 T 700,25 L 900,25 Q 1000,25 1000,40 T 1200,40 L 1400,40" />
+                </circle>
+            </svg>
+        </div>
+    </div>
+
+    <!-- GridWatch Section -->
+    <section id="gridwatch" class="featured-project">
+        <div class="container">
+            <div class="featured-header">
+                <h3 class="featured-title">GridWatch</h3>
+                <span class="featured-subtitle">Built with AI</span>
+            </div>
+            <p class="featured-desc">Electron-based operations toolkit architected to streamline NOC workflows. Consolidates real-time monitoring, asset tracking, and multi-vendor dashboards into a unified interface.</p>
+            
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <div class="featured-img-wrapper">
+                        <img src="images/gridwatch-network.png" alt="GridWatch Network Monitor">
+                    </div>
+                    <div class="featured-info">
+                        <h4>Network Monitor</h4>
+                        <p>Real-time observability dashboard for infrastructure nodes. Visual status grid with automated health checks, state change alerts, and incident logging for rapid triage.</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-img-wrapper">
+                        <img src="images/gridwatch-locations.png" alt="GridWatch Location Tracker">
+                    </div>
+                    <div class="featured-info">
+                        <h4>Location Tracker</h4>
+                        <p>GPS-based asset management with interactive mapping. Tracks field equipment, maintenance history, and site documentation for distributed infrastructure coordination.</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-img-wrapper">
+                        <img src="images/gridwatch-dashboard.png" alt="GridWatch Dashboard Aggregator">
+                    </div>
+                    <div class="featured-info">
+                        <h4>Dashboard Aggregator</h4>
+                        <p>Unified NOC view consolidating multi-vendor monitoring portals (Nagios, Cisco, AWS) with configurable presets and multi-monitor support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MindKeep Section -->
+    <section id="mindkeep" class="featured-project mindkeep-section">
+        <div class="container">
+            <div class="featured-header">
+                <h3 class="featured-title">MindKeep</h3>
+                <span class="featured-subtitle">Built with AI</span>
+            </div>
+            <p class="featured-desc">Self-hosted infrastructure platform running on a 4-node Raspberry Pi cluster. Full observability stack, automation pipelines, and service orchestration.</p>
+            
+            <div class="featured-grid featured-grid-2">
+                <div class="featured-item">
+                    <div class="featured-img-wrapper">
+                        <img src="images/mindkeep-services.png" alt="MindKeep Services Hub">
+                    </div>
+                    <div class="featured-info">
+                        <h4>Services Hub</h4>
+                        <p>Centralized operations dashboard: Zabbix monitoring, Portainer container orchestration, N8N workflow automation, Matrix messaging, and NAS integration.</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <div class="featured-img-wrapper">
+                        <img src="images/mindkeep-infra.png" alt="MindKeep Infrastructure">
+                    </div>
+                    <div class="featured-info">
+                        <h4>Network Infrastructure</h4>
+                        <p>DNS layer (Pi-hole + Unbound recursive resolver), VoIP system (Asterisk PBX with Yealink provisioning), and AI transcription pipeline (Whisper API integration).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transmission Line 3 -->
+    <div class="transmission-line" style="height: 80px;">
+        <svg class="transmission-svg" viewBox="0 0 1400 80" preserveAspectRatio="none">
+            <path class="transmission-path" d="M 0,50 Q 200,50 300,30 T 600,30 L 800,30 Q 1000,30 1100,50 T 1400,50" />
+            <circle class="data-packet" r="4">
+                <animateMotion dur="6s" repeatCount="indefinite" path="M 0,50 Q 200,50 300,30 T 600,30 L 800,30 Q 1000,30 1100,50 T 1400,50" />
+            </circle>
+        </svg>
+    </div>
+
+    <!-- Photo Gallery - Full width dark section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">More Projects & Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/ds-app.png" alt="DS Planner App">
+                    <div class="caption">DS Planner App <span class="ai-badge">· AI</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/homelab.png" alt="Home Lab">
+                    <div class="caption">Home Lab</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gundam.png" alt="Hobby Models">
+                    <div class="caption">Hobby Models</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cables-1.jpg" alt="Cabling">
+                    <div class="caption">Cabling</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cables-2.jpg" alt="Cabling">
+                    <div class="caption">Cabling</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cables-3.jpg" alt="Cabling">
+                    <div class="caption">Cabling</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cables-4.jpg" alt="Cabling">
+                    <div class="caption">Cabling</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cables-5.jpg" alt="Cabling">
+                    <div class="caption">Cabling</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cables-6.jpg" alt="Cabling">
+                    <div class="caption">Cabling</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transmission Line 4 -->
+    <div class="transmission-line" style="height: 80px;">
+        <svg class="transmission-svg" viewBox="0 0 1400 80" preserveAspectRatio="none">
+            <path class="transmission-path" d="M 0,30 L 300,30 Q 450,30 450,50 T 700,50 L 950,50 Q 1100,50 1100,30 T 1400,30" />
+            <circle class="data-packet" r="4">
+                <animateMotion dur="5.5s" repeatCount="indefinite" path="M 0,30 L 300,30 Q 450,30 450,50 T 700,50 L 950,50 Q 1100,50 1100,30 T 1400,30" />
+            </circle>
+        </svg>
+    </div>
+
+    <div class="container">
+        <!-- About - Colorful Section -->
+        <section id="about" class="about-colorful">
+            <div class="about-colorful-inner">
+                <div class="about-header">
+                    <h2 class="about-title">About Me</h2>
+                </div>
+
+                <div class="about-tagline">
+                    <span>Resourceful.</span>
+                    <span>Resilient.</span>
+                    <span class="highlight">Creative when it counts.</span>
+                </div>
+
+                <p style="max-width: 720px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1rem; line-height: 1.8; text-align: center;">
+                    I am a systems-oriented infrastructure and network operations professional focused on keeping critical environments stable, functional, and well coordinated. I approach issues with a systems-thinking mindset, working problems methodically through remote troubleshooting, dispatching field technicians, guiding on-site staff through repairs, or coordinating multi-team calls until resolution.
+                </p>
+
+                <p style="max-width: 720px; margin: 0 auto 1.5rem; color: var(--text-secondary); font-size: 1rem; line-height: 1.8; text-align: center;">
+                    My experience includes network operations, telecom and signal monitoring, maintenance window scheduling, remote hands coordination, real-time incident response, and hands-on data center environments. I am comfortable operating in high-pressure, on-call situations and staying calm when issues escalate, working closely with security teams, field engineers, and clients while maintaining clear communication.
+                </p>
+
+                <p style="max-width: 720px; margin: 0 auto 1.5rem; color: var(--text-secondary); font-size: 1rem; line-height: 1.8; text-align: center;">
+                    Alongside operational responsibilities, I bring practical familiarity with cabling, systems, and infrastructure hardware, and I regularly build small AI-assisted tools and automations to improve my workflows. My overall approach is practical, detail-oriented, and curious while making technical processes understandable for the people involved. I like to hit the ground running. Move fast and break things to get things done, but I can slow down as the situation needs.
+                </p>
+
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-bottom: 1.5rem;">
+                    Infrastructure-minded Systems Engineer · Applied AI · Cross-Domain Technical Strength
+                </p>
+
+                <p style="font-size: 0.9rem; color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">
+                    I use AI to build stuff.
+                </p>
+
+                <div class="about-tags">
+                    <span class="tag">Home Lab Enthusiast</span>
+                    <span class="tag">Japanese N3</span>
+                    <span class="tag">Tool Builder</span>
+                    <span class="tag">Night Shift Veteran</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Full Resume Section -->
+    <section id="resume" style="background: #fff; padding: 4rem 0; border-top: 1px solid #E5E4E0;">
+        <div class="container">
+            <h2 class="resume-title">Full Resume</h2>
+            
+            <div class="resume-box" style="max-width: 800px; margin: 0 auto; border: 1px solid #E5E4E0; padding: 2.5rem; background: #FAFAF8;">
+                <!-- Resume Header -->
+                <div style="text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #1A1A1A;">
+                    <h3 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem;">Cody Allen</h3>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem; font-size: 0.8rem; color: #4A4A4A;">
+                        <span><strong>Location:</strong> Mineola, TX</span>
+                        <span><strong>Website:</strong> codyallen.work</span>
+                        <span><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="395a565d405855555c570f0a09795e54585055175a5654">[email&#160;protected]</a></span>
+                        <span><strong>Phone:</strong> 737-394-5511</span>
+                        <span><strong>Cell:</strong> 469-407-9815</span>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #E5E4E0; padding-bottom: 0.4rem; margin-bottom: 0.75rem;">Summary</h4>
+                    <p style="font-size: 0.9rem; color: #4A4A4A; line-height: 1.7;">Infrastructure & Network Engineer focused on keeping critical systems running through methodical troubleshooting, cross-functional coordination, and practical tool-building.</p>
+                </div>
+
+                <!-- Experience -->
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #E5E4E0; padding-bottom: 0.4rem; margin-bottom: 0.75rem;">Experience</h4>
+                    
+                    <div style="margin-bottom: 1.25rem;">
+                        <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem;">
+                            <span style="font-weight: 600;">Level 3 NOC Engineer (Team Lead)  L1 → L2 → L3</span>
+                            <span style="color: #3D5A73;">Fiber Sense Pty Ltd</span>
+                            <span style="color: #7A7A7A;">• Remote</span>
+                        </div>
+                        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #7A7A7A; margin: 0.25rem 0 0.5rem;">July 2021 – Present</div>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #4A4A4A;">
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> <strong>L1:</strong> Owned observability for 28 infrastructure nodes across 5 countries, maintaining 99.97% uptime SLA</li>
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> <strong>L2 / Team Lead:</strong> Led 4-person NOC team; authored SOPs adopted org-wide for standardized incident handling</li>
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> <strong>L3:</strong> Drove Zabbix monitoring; served as incident commander for critical events across time zones</li>
+                            <li style="padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0;">–</span> Architected GridWatch Electron toolset for real-time monitoring and multi-vendor dashboard aggregation</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 1.25rem;">
+                        <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem;">
+                            <span style="font-weight: 600;">Network Engineer</span>
+                            <span style="color: #3D5A73;">ANI Network</span>
+                            <span style="color: #7A7A7A;">• Remote</span>
+                        </div>
+                        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #7A7A7A; margin: 0.25rem 0 0.5rem;">March 2019 – July 2021</div>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #4A4A4A;">
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> Owned monitoring and infrastructure reliability across 3 data center sites in Dallas and NYC</li>
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> Established alerting framework in LibreNMS with custom thresholds and escalation paths</li>
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> Deployed Ovirt virtualization; implemented Graylog for centralized log aggregation</li>
+                            <li style="padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0;">–</span> Configured network infrastructure: VLANs, switch ports; administered Asterisk PBX</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem;">
+                            <span style="font-weight: 600;">Data Center Engineer Tier 1 → 2 → 3</span>
+                            <span style="color: #3D5A73;">IBM Cloud</span>
+                            <span style="color: #7A7A7A;">• Dallas, TX</span>
+                        </div>
+                        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: #7A7A7A; margin: 0.25rem 0 0.5rem;">March 2016 – March 2019</div>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #4A4A4A;">
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> <strong>Tier 1:</strong> Provisioned and deployed 500+ bare metal servers</li>
+                            <li style="padding-left: 1rem; position: relative; margin-bottom: 0.3rem;"><span style="position: absolute; left: 0;">–</span> <strong>Tier 2:</strong> Executed 100-rack data center POD buildout end-to-end</li>
+                            <li style="padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0;">–</span> <strong>Tier 3:</strong> Owned customer escalations, maintained SLA compliance, onboarded technicians</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tools Built -->
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #E5E4E0; padding-bottom: 0.4rem; margin-bottom: 0.75rem;">Tools Built</h4>
+                    <p style="font-size: 0.85rem; color: #4A4A4A; margin-bottom: 0.4rem;"><strong>GridWatch</strong> (Electron) – Operations toolkit: real-time node monitoring, GPS-based asset tracking, multi-vendor dashboard aggregation</p>
+                    <p style="font-size: 0.85rem; color: #4A4A4A;"><strong>MindKeep</strong> (Electron) – Infrastructure command center for 4-node Pi cluster: Zabbix, Pi-hole DNS, Asterisk PBX, N8N automation, Whisper transcription</p>
+                </div>
+
+                <!-- Skills -->
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #E5E4E0; padding-bottom: 0.4rem; margin-bottom: 0.75rem;">Skills</h4>
+                    <p style="font-size: 0.85rem; color: #4A4A4A; margin-bottom: 0.4rem;"><strong>Infrastructure:</strong> Observability, Incident Management, Linux/CentOS, Cisco Networking, Firewalls, VPNs, BGP, OSPF, TCP/IP</p>
+                    <p style="font-size: 0.85rem; color: #4A4A4A; margin-bottom: 0.4rem;"><strong>Tools:</strong> Zabbix, LibreNMS, Graylog, Solarwinds, Docker, Portainer, ServiceNow, Wireshark, Ovirt, Asterisk</p>
+                    <p style="font-size: 0.85rem; color: #4A4A4A; margin-bottom: 0.4rem;"><strong>Home Lab:</strong> 4-node Raspberry Pi cluster: Zabbix Server, Pi-hole/Unbound DNS, Asterisk PBX, N8N automation, Whisper API</p>
+                    <p style="font-size: 0.85rem; color: #4A4A4A; margin-bottom: 0.4rem;"><strong>Development:</strong> Electron, JavaScript, .NET, Web Development, Database Management</p>
+                    <p style="font-size: 0.85rem; color: #4A4A4A;"><strong>Other:</strong> SLA/SLO Management, Process Documentation, Cross-functional Coordination, Remote Operations, Japanese (N3)</p>
+                </div>
+
+                <!-- Education -->
+                <div>
+                    <h4 style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #E5E4E0; padding-bottom: 0.4rem; margin-bottom: 0.75rem;">Education</h4>
+                    <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem;">
+                        <span style="font-weight: 600;">Japanese Language Program</span>
+                        <span style="color: #3D5A73;">NILS Language School</span>
+                        <span style="color: #7A7A7A;">• Ogori, Japan</span>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #7A7A7A; margin-top: 0.25rem;">2012 – 2014 • 18-month vocational language program, N3 proficiency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact - Full width -->
+    <section id="contact">
+        <div class="contact-content">
+            <h2>Get In Touch</h2>
+            <p>Seeking Infrastructure Engineer or NOC Lead roles with ownership, complex problems, and teams that value building tools.</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="/cdn-cgi/l/email-protection#e4878b809d858888818ad2d7d4a48389858d88ca878b89"><span class="__cf_email__" data-cfemail="563539322f373a3a333860656616313b373f3a7835393b">[email&#160;protected]</span></a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="label">Phone</div>
+                    <div class="value">737-394-5511</div>
+                </div>
+                <div class="contact-item">
+                    <div class="label">Cell</div>
+                    <div class="value">469-407-9815</div>
+                </div>
+                <div class="contact-item">
+                    <div class="label">Location</div>
+                    <div class="value">Mineola, TX</div>
+                </div>
+            </div>
+            <a href="Cody_Allen_Senior_Network_Engineer_Resume_v2.pdf" class="download-btn" download>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
